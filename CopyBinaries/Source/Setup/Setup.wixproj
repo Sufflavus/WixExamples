@@ -30,6 +30,7 @@
   <ItemGroup>
     <Content Include="Filter.xslt" />
     <Content Include="packages.config" />
+    <Content Include="ReadMe.txt" />
     <Content Include="Variables.wxi" />
   </ItemGroup>
   <ItemGroup>
