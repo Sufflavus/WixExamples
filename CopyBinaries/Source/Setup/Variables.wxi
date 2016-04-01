@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
-  <?define ProductName="Sample" ?>
+  <?define ProductName="CopyBinariesSample" ?>
   <?define ProductVersion="1.0.0.0" ?>
   <?define ProductCode="A749EAFE-81B9-4C01-85FE-22CC3BA6A653"?>
   <?define UpgradeCode="3EC8FF84-9938-40DF-869D-C01A5519ABCE"?>
   <?define Manufacturer="SomeCompany"?>
   
-  <?define SuperDuperLibraryBinaries="SomeCompany"?>
+  <?define InstallationFolder="$(var.Manufacturer)"?>
 </Include>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLFOLDER">
+            <Directory Id="dir0D05DA0FA969C5E233D83EE372C85D9C" Name="SuperDuperLibrary">
+                <Component Id="cmpA6BCF352CB8EC1A9AC147804E5E5AA9E" Guid="*">
+                    <File Id="fil5DCDC4F838BC1889BC51C6BFF5ED6D57" KeyPath="yes" Source="$(var.SuperDuperLibraryOutputDir)\SuperDuperLibrary.dll" />
+                </Component>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="SuperDuperLibrary.Binaries">
+            <ComponentRef Id="cmpA6BCF352CB8EC1A9AC147804E5E5AA9E" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

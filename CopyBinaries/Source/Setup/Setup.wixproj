@@ -17,20 +17,23 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <DefineConstants>Debug</DefineConstants>
+    <DefineConstants>Debug;SuperDuperLibraryOutputDir=$(SolutionDir)Out\$(Configuration)\SuperDuperLibrary</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Fragments\SuperDuperLibrary.Binaries.wxs" />
     <Compile Include="Product.wxs" />
-    <Compile Include="SuperDuperLibrary.Binaries.wxs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Filter.xslt" />
     <Content Include="packages.config" />
     <Content Include="Variables.wxi" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fragments" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -40,7 +43,7 @@
     <Error Condition="!Exists('..\..\packages\WiX.3.10.2\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\WiX.3.10.2\build\wix.props'))" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)packages\WiX.3.10.2\tools\heat.exe" dir "$(SolutionDir)Out\$(Configuration)\SuperDuperLibrary" -t "$(SolutionDir)Source\$(ProjectName)\Filter.xslt" -var var.SuperDuperLibraryBinaries -dr APPLICATIONFOLDER -cg SuperDuperLibrary.Binaries -ag -scom -sreg -sfrag –srd -o "$(SolutionDir)Source\$(ProjectName)\SuperDuperLibrary.Binaries.wxs"</PreBuildEvent>
+    <PreBuildEvent>"$(SolutionDir)packages\WiX.3.10.2\tools\heat.exe" dir "$(SolutionDir)Out\$(Configuration)\SuperDuperLibrary" -t "$(SolutionDir)Source\$(ProjectName)\Filter.xslt" -var var.SuperDuperLibraryOutputDir -dr INSTALLFOLDER -cg SuperDuperLibrary.Binaries -ag -scom -sreg -sfrag –srd -o "$(SolutionDir)Source\$(ProjectName)\Fragments\SuperDuperLibrary.Binaries.wxs"</PreBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
