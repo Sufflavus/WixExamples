@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Bundle Name="Awesome Software"
+        Version="1.0.1.0"
+        Manufacturer="Awesome Company"
+        Copyright="(c) All rights reserved."
+        UpgradeCode="1055C592-B515-4350-9B51-05BFEC040DAB">
+
+    <!--Check if the JRE has been installed.
+      We'll use the new RegistrySearch element to search for a key located at HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\1.7. 
+      If it is found, we will know that JRE 1.7 is currently installed. 
+      I have set the Result attribute to exists to indicate that I want the variable to be set to 1 or 0, depending on if the key exists.
+      By setting Win64 to yes, the search will check the 64-bit portion of the registry for the keys set by the 64-bit installer-->
+    <!--<util:RegistrySearch
+      Root="HKLM"
+      Key="SOFTWARE\JavaSoft\Java Runtime Environment\1.7"
+      Result="exists" 
+      Variable="JavaInstalled_x64"
+      Win64="yes" />
+    <util:RegistrySearch
+      Root="HKLM"
+      Key="SOFTWARE\JavaSoft\Java Runtime Environment\1.7"
+      Result="exists"
+      Variable="JavaInstalled_x86" />-->
+
+    <BootstrapperApplicationRef
+      Id="WixStandardBootstrapperApplication.RtfLicense" />
+
+    <Chain>
+      <MsiPackage SourceFile="$(var.SimpleSetup1.TargetDir)SimpleSetup1.msi" />
+      <MsiPackage SourceFile="$(var.SimpleSetup2.TargetDir)SimpleSetup2.msi" />
+
+      <!-- Install different packadges depend on condition. There are two version of the JRE installer—one for 64-bit systems and another for 32-bit systems.
+        We could then set the DetectCondition attribute on the ExePackage elements using these variables. Burn uses DetectCondition to determine if the EXE package
+        is installed. That way, it can make sensible decisions regarding whether the package is eligible for install or uninstall.-->
+      <!--<ExePackage SourceFile="jre-7u7-windows-x64.exe" InstallCondition="VersionNT64" DetectCondition="JavaInstalled_x64"/>
+      <ExePackage SourceFile="jre-7u7-windows-i586.exe" InstallCondition="NOT VersionNT64" DetectCondition="JavaInstalled_x86"/>-->
+
+      <!-- silent install -->
+      <!--<ExePackage SourceFile="jre-7u7-windows-x64.exe" InstallCondition="VersionNT64" InstallCommand="/s" />-->
+    </Chain>
+  </Bundle>
+</Wix>
