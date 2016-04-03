@@ -32,9 +32,11 @@ namespace CustomBA.ViewModels
         private int _executeProgress;
 
         private string _message;
+        private bool _needInstaller1;
+        private bool _needInstaller2;
+        private bool _needInstaller3;
         private int _progress;
         private InstallState _state;
-        private string _username;
 
         public InstallViewModel(BootstrapperApplicationModel model)
         {
@@ -88,15 +90,39 @@ namespace CustomBA.ViewModels
                 };
         }
 
-        public string Username
+        public bool NeedInstaller1
         {
-            get { return _username; }
+            get { return _needInstaller1; }
             set
             {
-                _username = value;
+                _needInstaller1 = value;
 
-                // set value to variable "Username" inside Bundle of our Bootstrapper
-                _model.SetBurnVariable("Username", _username);
+                // set value to variable "NeedInstaller1" inside Bundle of our Bootstrapper
+                _model.SetBurnVariable("NeedInstaller1", _needInstaller1 ? "true" : "false");
+            }
+        }
+
+        public bool NeedInstaller2
+        {
+            get { return _needInstaller2; }
+            set
+            {
+                _needInstaller2 = value;
+
+                // set value to variable "NeedInstaller2" inside Bundle of our Bootstrapper
+                _model.SetBurnVariable("NeedInstaller2", _needInstaller2 ? "true" : "false");
+            }
+        }
+
+        public bool NeedInstaller3
+        {
+            get { return _needInstaller3; }
+            set
+            {
+                _needInstaller3 = value;
+
+                // set value to variable "NeedInstaller3" inside Bundle of our Bootstrapper
+                _model.SetBurnVariable("NeedInstaller3", _needInstaller3 ? "true" : "false");
             }
         }
 
@@ -164,7 +190,7 @@ namespace CustomBA.ViewModels
             // If it finds a match, check whether that package is currently installed on the end user's computer via the PackageState enumeration. 
             // If it is Present, we set the State property to InstallState.Present, otherwise it is set to InstallState.NotPresent.
             if (e.PackageId.Equals(
-                "SimpleSetup.msi", StringComparison.Ordinal))
+                "SimpleSetup1.msi", StringComparison.Ordinal))
             {
                 State = e.State == PackageState.Present ? InstallState.Present : InstallState.NotPresent;
             }

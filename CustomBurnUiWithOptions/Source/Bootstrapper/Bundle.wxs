@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Bundle Name="MyBootstrapper" Version="1.0.0.0" Manufacturer="Awesome Company" UpgradeCode="6D210442-5B3A-4357-A294-0F6CB8390E6A">
+  <Bundle Name="MyBootstrapper" Version="1.0.0.0" Manufacturer="Awesome Company" UpgradeCode="DC83050A-0AB7-4BF6-A540-C73D91D90900">
     <BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
       <Payload SourceFile="$(var.CustomBA.TargetDir)CustomBA.dll" />
       <Payload SourceFile="$(var.CustomBA.TargetDir)BootstrapperCore.config" />
@@ -16,9 +16,21 @@
     <WixVariable Id="WixMbaPrereqLicenseUrl" Value="" />
     <WixVariable Id="WixMbaPrereqPackageId" Value="" />
 
+    <Variable Name="NeedInstaller1" Value="false" />
+    <Variable Name="NeedInstaller2" Value="false" />
+    <Variable Name="NeedInstaller3" Value="false" />
+
     <Chain>
-      <MsiPackage SourceFile="$(var.SimpleSetup.TargetDir)SimpleSetup.msi">
-        <MsiProperty Name="USERNAME" Value="[Username]"/>
+      <MsiPackage SourceFile="$(var.SimpleSetup1.TargetDir)SimpleSetup1.msi" InstallCondition="NeedInstaller1 = &quot;true&quot;">
+        <MsiProperty Name="ISNEEDED1" Value="[NeedInstaller1]" />
+      </MsiPackage>
+      
+      <MsiPackage SourceFile="$(var.SimpleSetup2.TargetDir)SimpleSetup2.msi" InstallCondition="NeedInstaller2 = &quot;true&quot;">
+        <MsiProperty Name="ISNEEDED2" Value="[NeedInstaller1]" />
+      </MsiPackage>
+      
+      <MsiPackage SourceFile="$(var.SimpleSetup3.TargetDir)SimpleSetup3.msi" InstallCondition="NeedInstaller3 = &quot;true&quot;">
+        <MsiProperty Name="ISNEEDED3" Value="[NeedInstaller3]" />
       </MsiPackage>
     </Chain>
   </Bundle>
