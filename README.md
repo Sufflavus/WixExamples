@@ -2,4 +2,9 @@
 
 ## Samples
 
-### [Copy Binaries](CopyBinaries)
+### [CopyBinaries](CopyBinaries)
+### [BasicBootstrapper](BasicBootstrapper)
+### [BasicCustomBurnUi](BasicCustomBurnUi)
+### [BasicCustomBurnUi](BasicCustomBurnUi)
+### [CustomBurnUiWithOptions](CustomBurnUiWithOptions)
+### [CustomBurnUiWithOptionsOnPureWpf](CustomBurnUiWithOptionsOnPureWpf)
