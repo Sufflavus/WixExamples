@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Bundle Name="MyBootstrapper"
+          Version="1.0.0.0"
+          Manufacturer="Awesome Company"
+          UpgradeCode="6D210442-5B3A-4357-A294-0F6CB8390E6A">
+    <BootstrapperApplicationRef
+      Id="ManagedBootstrapperApplicationHost">
+      <Payload
+        SourceFile="$(var.CustomBA.TargetDir)CustomBA.dll" />
+      <Payload SourceFile="$(var.CustomBA.TargetDir)BootstrapperCore.config" />
+      <Payload SourceFile="$(var.CustomBA.TargetDir)Microsoft.Practices.Prism.Mvvm.dll" />
+      <Payload SourceFile="$(var.CustomBA.TargetDir)Microsoft.Practices.Prism.Composition.dll" />
+      <Payload SourceFile="$(var.CustomBA.TargetDir)Microsoft.Practices.Prism.Mvvm.Desktop.dll" />
+      <Payload SourceFile="$(var.CustomBA.TargetDir)Microsoft.Practices.Prism.SharedInterfaces.dll" />
+    </BootstrapperApplicationRef>
+
+    <!--We must also set two WixVariable elements: WixMbaPrereqLicenseUrl and WixMbaPrereqPackageId. 
+    The reason we need to do this is that the ManagedBootstrapperApplicationHost expects them.-->
+    <WixVariable Id="WixMbaPrereqLicenseUrl" Value="" />
+    <WixVariable Id="WixMbaPrereqPackageId" Value="" />
+
+    <Chain>
+      <MsiPackage SourceFile="$(var.SimpleSetup.TargetDir)SimpleSetup.msi">
+        <MsiProperty Name="USERNAME" Value="[Username]"/>
+      </MsiPackage>
+    </Chain>
+  </Bundle>
+</Wix>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?if $(var.Platform) = x64 ?>
+  <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+  <?else ?>
+  <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+  <?endif ?>
+
+  <?define ProductCode="*" ?>
+  <?define UpgradeCode="5211D481-CCD1-4B05-905E-04D88E7DD095" ?>
+  <?define Version = "1.0.0.0" ?>
+  <?define Manufacturer = "Awesome Company" ?>
+  <?define ProductName = "SimpleSetup" ?>
+  <?define ProductFolder = "$(var.ProductName)" ?>
+</Include>
