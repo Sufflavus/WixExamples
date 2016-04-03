@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Bundle Name="MyBootstrapper" Version="1.0.0.0" Manufacturer="Awesome Company" UpgradeCode="D0CEB36A-B42E-4107-8091-FA5B93322CA6">
+    <BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
+      <!--Make sure CustomBA project type is WPF User Control Library when you create your project.-->
+      <Payload SourceFile="$(var.CustomBA.TargetDir)CustomBA.dll" />
+      <Payload SourceFile="$(var.CustomBA.TargetDir)BootstrapperCore.config" />
+    </BootstrapperApplicationRef>
+
+    <!--We must also set two WixVariable elements: WixMbaPrereqLicenseUrl and WixMbaPrereqPackageId. 
+    The reason we need to do this is that the ManagedBootstrapperApplicationHost expects them.-->
+    <WixVariable Id="WixMbaPrereqLicenseUrl" Value="" />
+    <WixVariable Id="WixMbaPrereqPackageId" Value="" />
+
+    <Variable Name="NeedInstaller1" Value="false" />
+    <Variable Name="NeedInstaller2" Value="false" />
+    <Variable Name="NeedInstaller3" Value="false" />
+
+    <Chain>
+      <MsiPackage SourceFile="$(var.SimpleSetup1.TargetDir)SimpleSetup1.msi" InstallCondition="NeedInstaller1 = &quot;true&quot;">
+        <MsiProperty Name="ISNEEDED1" Value="[NeedInstaller1]" />
+      </MsiPackage>
+
+      <MsiPackage SourceFile="$(var.SimpleSetup2.TargetDir)SimpleSetup2.msi" InstallCondition="NeedInstaller2 = &quot;true&quot;">
+        <MsiProperty Name="ISNEEDED2" Value="[NeedInstaller1]" />
+      </MsiPackage>
+
+      <MsiPackage SourceFile="$(var.SimpleSetup3.TargetDir)SimpleSetup3.msi" InstallCondition="NeedInstaller3 = &quot;true&quot;">
+        <MsiProperty Name="ISNEEDED3" Value="[NeedInstaller3]" />
+      </MsiPackage>
+    </Chain>
+  </Bundle>
+</Wix>
