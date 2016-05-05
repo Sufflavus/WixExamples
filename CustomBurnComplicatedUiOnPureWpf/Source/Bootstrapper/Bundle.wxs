@@ -18,15 +18,15 @@
     <Variable Name="NeedInstaller3" Value="false" />
 
     <Chain>
-      <MsiPackage SourceFile="$(var.SimpleSetup1.TargetDir)SimpleSetup1.msi" InstallCondition="NeedInstaller1 = &quot;true&quot;">
+      <MsiPackage SourceFile="$(var.SimpleSetup1.TargetDir)SimpleSetup1.msi" Id="InstallationPackage1" InstallCondition="NeedInstaller1 = &quot;true&quot;">
         <MsiProperty Name="ISNEEDED1" Value="[NeedInstaller1]" />
       </MsiPackage>
 
-      <MsiPackage SourceFile="$(var.SimpleSetup2.TargetDir)SimpleSetup2.msi" InstallCondition="NeedInstaller2 = &quot;true&quot;">
+      <MsiPackage SourceFile="$(var.SimpleSetup2.TargetDir)SimpleSetup2.msi" Id="InstallationPackage2" InstallCondition="NeedInstaller2 = &quot;true&quot;">
         <MsiProperty Name="ISNEEDED2" Value="[NeedInstaller1]" />
       </MsiPackage>
 
-      <MsiPackage SourceFile="$(var.SimpleSetup3.TargetDir)SimpleSetup3.msi" InstallCondition="NeedInstaller3 = &quot;true&quot;">
+      <MsiPackage SourceFile="$(var.SimpleSetup3.TargetDir)SimpleSetup3.msi" Id="InstallationPackage3" InstallCondition="NeedInstaller3 = &quot;true&quot;">
         <MsiProperty Name="ISNEEDED3" Value="[NeedInstaller3]" />
       </MsiPackage>
     </Chain>
