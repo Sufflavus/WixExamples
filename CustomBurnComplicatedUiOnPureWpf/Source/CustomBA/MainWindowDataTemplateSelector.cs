@@ -5,7 +5,7 @@ namespace CustomBA
 {
     public class MainWindowDataTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate GreetingPageTemplate { get; set; }
+        public DataTemplate InstallGreetingPageTemplate { get; set; }
 
         public DataTemplate RepairAndUninstallGreetingPageTemplate { get; set; }
 

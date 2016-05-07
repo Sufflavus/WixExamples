@@ -59,11 +59,34 @@
     <Compile Include="InstallState.cs" />
     <Compile Include="MainWindowDataTemplateSelector.cs" />
     <Compile Include="Models\BootstrapperApplicationModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IFinishViewModel.cs" />
+    <Compile Include="ViewModels\FinishViewModel.cs" />
+    <Compile Include="ViewModels\UninstallProgressViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IUninstallProgressViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IInstallProgressViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IParametersViewModel.cs" />
+    <Compile Include="ViewModels\InstallProgressViewModel.cs" />
+    <Compile Include="ViewModels\ParametersViewModel.cs" />
+    <Compile Include="ViewModels\LicenseViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\ILicenseViewModel.cs" />
+    <Compile Include="ViewModels\RepairAndUninstallGreetingViewModel.cs" />
+    <Compile Include="ViewModels\InstallGreetingViewModel.cs" />
     <Compile Include="ViewModels\InstallViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IInstallGreetingViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IRepairAndUninstallGreetingViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IViewModel.cs" />
     <Compile Include="Views\InstallView.xaml.cs">
       <DependentUpon>InstallView.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomBootstrapperApplication.cs" />
+    <Page Include="Content\ImageResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Content\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\InstallView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,7 +119,9 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Content\Images\logo.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
