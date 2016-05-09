@@ -4,10 +4,40 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:CustomBA.ViewModels"
+             xmlns:controls="clr-namespace:CustomBA.Controls"
              d:DataContext="{d:DesignInstance viewModels:InstallGreetingViewModel}"
-             Height="300" Width="400" 
+             Height="350" Width="500" 
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Content/ImageResources.xaml"/>
+                <ResourceDictionary Source="../Content/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <Image Style="{StaticResource WelcomeImageStyle}" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            <TextBlock Margin="20" Style="{StaticResource Header}">Welcome to the Setup Wisard</TextBlock>
+            <TextBlock Margin="20 0">Click Next to continue</TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1"  Style="{StaticResource ButtonsPanel}">
+            <Button>Next ></Button>
+            <Button>Cancel</Button>
+        </StackPanel>
     </Grid>
 </UserControl>

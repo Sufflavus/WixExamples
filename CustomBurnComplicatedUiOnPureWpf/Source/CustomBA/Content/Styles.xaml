@@ -5,19 +5,46 @@
         <ResourceDictionary Source="../Content/ImageResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <SolidColorBrush x:Key="CommonBg" Color="#D7CCC8"/>
+    <SolidColorBrush x:Key="CommonBg" Color="#F5F2F0"/>
+
+    <!-- Control Style -->
+    <Style TargetType="Grid">
+        <Setter Property="Background" Value="{StaticResource CommonBg}"/>
+    </Style>
+    <Style TargetType="Button">
+        <Setter Property="Margin" Value="0,7,15,7"/>
+        <Setter Property="Width" Value="70"></Setter>
+    </Style>
 
     <!-- Header -->
     <Style x:Key="HeaderStyle" TargetType="Grid">
         <Setter Property="Background" Value="{StaticResource CommonBg}"/>
         <Setter Property="Height" Value="32"/>
     </Style>
+    
+    <Style x:Key="Header" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
 
     <!-- Logo -->
     <Style x:Key="LogoStyle" TargetType="Image">
-        <Setter Property="Width" Value="32"/>
-        <Setter Property="Height" Value="32"/>
-        <Setter Property="Margin" Value="0,0,12,0"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="0,0,10,0"/>
         <Setter Property="Source" Value="{StaticResource Logo}"/>
+    </Style>
+
+    <!-- Welcome image -->
+    <Style x:Key="WelcomeImageStyle" TargetType="Image">
+        <Setter Property="Width" Value="160"/>
+        <Setter Property="Height" Value="320"></Setter>
+        <Setter Property="Source" Value="{StaticResource Welcome}"/>
+    </Style>
+    
+    <Style x:Key="ButtonsPanel" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <!--<Setter Property="Background" Value="#D7CCC8"></Setter>-->
     </Style>
 </ResourceDictionary>
